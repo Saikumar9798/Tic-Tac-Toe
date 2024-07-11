@@ -69,7 +69,7 @@ public class TicTacToeGame {
         while (column < 1 || column > 3) {
             System.out.print("Enter column number (1/2/3) : ");
             column = scanner.nextInt();
-            if (column < 1 || column > 3) System.out.println("Invalid row number");
+            if (column < 1 || column > 3) System.out.println("Invalid column number");
         }
         boolean isAssignSuccessful = this.board.assignValueToCell(row, column, players[i].value().toString());
         if (!isAssignSuccessful) {
