@@ -60,10 +60,17 @@ public class TicTacToeGame {
     private boolean makeCellInsertion(int i, Scanner scanner) {
         System.out.println("---------------------------");
         System.out.printf("%s's turn : %n", players[i].name());
-        System.out.print("Enter row number (1/2/3) : ");
-        int row = scanner.nextInt();
-        System.out.print("Enter column number (1/2/3) : ");
-        int column = scanner.nextInt();
+        int row = 0, column = 0;
+        while (row < 1 || row > 3) {
+            System.out.print("Enter row number (1/2/3) : ");
+            row = scanner.nextInt();
+            if (row < 1 || row > 3) System.out.println("Invalid row number");
+        }
+        while (column < 1 || column > 3) {
+            System.out.print("Enter column number (1/2/3) : ");
+            column = scanner.nextInt();
+            if (column < 1 || column > 3) System.out.println("Invalid row number");
+        }
         boolean isAssignSuccessful = this.board.assignValueToCell(row, column, players[i].value().toString());
         if (!isAssignSuccessful) {
             System.out.printf("pin is already assigned with value %s%n", this.board.getCellValue(row, column));
@@ -89,7 +96,6 @@ public class TicTacToeGame {
         this.printWelcome();
         this.getInput();
         Scanner scanner = new Scanner(System.in);
-        boolean isGameWon = false;
         while (true) {
             boolean isPlayerTurnDone = false;
             while (!isPlayerTurnDone) isPlayerTurnDone = makeCellInsertion(0, scanner);
